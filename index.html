@@ -36,7 +36,7 @@
         {{#each subNav}}
           <ul class="nav">
             <li class="withripple {{#if hidden}}hide {{/if}}" data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
-              <a href="#api-{{group}}-{{name}}">{{title}}
+              <a href="#api-{{group}}-{{name}}">{{name}}
                 {{#if type}}
                 <span class="pull-right label label-{{label}}">{{type}}</span>
                 {{/if}}
@@ -53,10 +53,10 @@
 </script>
 
 <script id="template-project" type="text/x-handlebars-template">
-  <div class="header-panel shadow-z-2">
+  <div class="header-panel shadow-z-1">
     <div class="row">
       <div class="col-xs-3">
-        <h1> <span class="glyphicon glyphicon-option-vertical"></span> {{name}}</h1>
+        <h1>{{name}}</h1>
       </div>
       <div class="col-xs-9">
         <!--<div class="pull-right">-->
@@ -107,13 +107,15 @@
 </script>
 
 <script id="template-sections" type="text/x-handlebars-template">
-  <section class="well page" id="api-{{group}}">
+  <section class="well page">
+    <a class="anchor" id="api-{{group}}"></a>
     <h1>{{underscoreToSpace title}}</h1>
     {{#if description}}
       <p>{{{nl2br description}}}</p>
     {{/if}}
     {{#each articles}}
-      <div id="api-{{group}}-{{name}}">
+      <div>
+        <a class="anchor" id="api-{{group}}-{{name}}"></a>
         {{{article}}}
       </div>
     {{/each}}
@@ -121,10 +123,12 @@
 </script>
 
 <script id="template-article" type="text/x-handlebars-template">
-  <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} 
+  <article {{#if hidden}}class="hide"{{/if}} 
     data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
+    <a class="anchor" id="api-{{article.group}}-{{article.name}}-{{article.version}}"></a>
     <div class="pull-left">
-      <h1>{{underscoreToSpace article.groupTitle}}{{#if article.title}} - {{article.title}}{{/if}}</h1>
+      <h1>{{article.name}}</h1>
+      <h2 class="group">{{#if article.title}}{{article.title}}{{else}}{{article.groupTitle}}{{/if}}</h2>
     </div>
     {{#if template.withCompare}}
     <div class="pull-right">
@@ -332,7 +336,9 @@
 </script>
 
 <script id="template-compare-article" type="text/x-handlebars-template">
-  <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}" data-compare-version="{{compare.version}}">
+  <article {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}" data-compare-version="{{compare.version}}">
+    <a class="anchor" id="api-{{article.group}}-{{article.name}}-{{article.version}}"></a>
+    
     <div class="pull-left">
       <h1>{{underscoreToSpace article.group}} - {{{showDiff article.title compare.title}}}</h1>
     </div>
@@ -662,7 +668,7 @@
   </tbody>
 </script>
 
-<div id="project" >
+<div id="project">
 </div>
 <div class="container-fluid main">
   <div class="row">

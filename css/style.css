@@ -20,6 +20,8 @@ td.code {
 
 #content {
     /*padding-top: 16px;*/
+    height: auto !important;
+    overflow: inherit !important;
 }
 
 p  {
@@ -68,6 +70,7 @@ article h1 {
     font-weight: 600;
     font-size: 24px;
     line-height: 26px;
+    margin-bottom: 0;
 }
 
 article h2 {
@@ -111,7 +114,7 @@ th {
 
 td {
     vertical-align: top;
-    padding: 2px 8px;
+    padding: 4px 8px;
     border: #e0e0e0 1px solid;
 }
 
@@ -545,11 +548,11 @@ ul.nav-tabs {
     height:auto;
     max-height:90%;
     overflow:auto;
+    position: inherit !important;
 }
 .header-panel {
     background-color: #37474f;
     height: 64px;
-    position: relative;
     z-index: 5;
 }
 .header-panel div {
@@ -561,13 +564,12 @@ ul.nav-tabs {
     font-size: 30px;
     font-weight: 400;
     position: absolute;
-    bottom: 10px;
-    top:5px;
-    padding-left: 35px;
+    top: 8px;
+    padding-left: 30px;
 }
 .menu {
     overflow: auto;
-    padding: 0;
+    padding: 10px 0;
 }
 .menu, .menu * {
     -webkit-user-select: none;
@@ -594,17 +596,9 @@ ul.nav-tabs {
     text-decoration: none;
 }
 
-.pages {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 4;
-    padding: 0;
-    overflow: auto;
-}
 .pages > div {
     padding: 0 5px;
-    padding-top: 64px;
+    padding-top: 30px;
 }
 
 .pages .header {
@@ -617,11 +611,16 @@ ul.nav-tabs {
 }
 
 .page {
-    transform: translateY(1080px);
+    margin-bottom: 30px !important;
     transition: transform 0 linear;
     display: block;
     opacity: 1;
     font-size: 16px;
+}
+
+.page > div:not(:last-child) {
+    border-bottom: 1px solid grey;
+    margin-bottom: 15px;
 }
 
 .page.active {
@@ -632,4 +631,44 @@ ul.nav-tabs {
 }
 .nav>li>a{
     padding: 5px 15px;
+}
+
+table p {
+    margin: 0
+}
+
+#project {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.main {
+    padding-top: 64px;
+}
+
+#sidenav {
+    position: sticky;
+    top: 64px;
+}
+
+.menu {
+    height: calc(100vh - 64px);
+}
+
+.menu .label {
+    margin-top: 2px;
+}
+
+h2.group {
+    color: rgba(0, 0, 0, 0.25);
+    padding-left: 8px;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    visibility: hidden;
+    top: -75px;
 }

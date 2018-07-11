@@ -376,7 +376,7 @@ require([
     e.preventDefault();
     var id = $(this).attr('href');
     if ($(id).length > 0){
-       $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 1000);
+       $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 200);
     }
     window.location.hash = $(this).attr('href');
     if ($(this).parent().is(".nav-header")) {
@@ -761,8 +761,8 @@ require([
 
   $(window).on("resize", function() {
     $("html, body").height($(window).height());
-    $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight());
-    $(".pages").height($(window).height());
+    //$(".main, .menu").height($(window).height() - $(".header-panel").outerHeight());
+    //$(".pages").height($(window).height());
   }).trigger("resize");
 
   $(".menu li").click(function() {
